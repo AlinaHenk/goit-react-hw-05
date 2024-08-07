@@ -45,7 +45,17 @@ export const getCast = async (movieId) => {
     }
   );
 
-  return res.cast;
+  return res.data;
+};
+
+export const getMovies = async (movie) => {
+  const res = await axios.get(`/3/search/movie?query=${movie}`, {
+    headers: {
+      Authorization: tocken,
+    },
+  });
+
+  return res.data;
 };
 
 // axios

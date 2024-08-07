@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getCast } from "../movies-api";
+import Actor from "../ActorList/ActorList";
+import ActorList from "../ActorList/ActorList";
 
 export default function MovieCast() {
   const [cast, setCast] = useState(null);
@@ -10,7 +12,7 @@ export default function MovieCast() {
     async function fetchCast() {
       try {
         const data = await getCast(movieId);
-        setReviews(data);
+        setCast(data);
         console.log(data);
       } catch (error) {
         console.log(error);
@@ -18,5 +20,8 @@ export default function MovieCast() {
     }
     fetchCast();
   }, [movieId]);
-  return <div>MovieCast</div>;
+  const noCast = (
+    <p>We don't have any information about the cast for this movie.</p>
+  );
+  return cast && cast.cast.length > 0 ? <ActorList cast={cast} /> : noCast;
 }
