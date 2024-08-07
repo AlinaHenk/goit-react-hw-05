@@ -1,14 +1,9 @@
 import { useEffect, useState } from "react";
-import {
-  Link,
-  Outlet,
-  useParams,
-  useNavigate,
-  useLocation,
-} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Field, Form, Formik } from "formik";
 import MovieList from "../../components/MovieList/MovieList";
 import { getMovies } from "../../components/movies-api";
+import css from "./MoviesPage.module.css";
 
 export default function MoviesPage() {
   const navigate = useNavigate();
@@ -32,7 +27,7 @@ export default function MoviesPage() {
   }, [movie]);
 
   return (
-    <div>
+    <div className={css.form}>
       <Formik
         initialValues={{ movie: !movie ? "" : movie }}
         onSubmit={(values, actions) => {

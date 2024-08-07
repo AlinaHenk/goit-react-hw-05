@@ -1,0 +1,14 @@
+.nav {
+  display: flex;
+  gap: 8px;
+  box-shadow: 2px 2px #c2bebe;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.active {
+  color: orangered;
+}

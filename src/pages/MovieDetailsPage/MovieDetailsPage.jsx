@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams, Outlet, useLocation } from "react-router-dom";
 import { getMovieById } from "../../components/movies-api";
 import MovieInfo from "../../components/MovieInfo/MovieInfo";
+import css from "./MovieDetailsPage.module.css";
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -27,7 +28,7 @@ export default function MovieDetailsPage() {
       <Link to={backLinkHref}>Go back</Link>
       {movie && <MovieInfo movie={movie} />}
       <h3>Additional information</h3>
-      <ul>
+      <ul className={css.additionalInnfo}>
         <li>
           <Link to={`/movies/${movieId}/cast`}>Cast</Link>
         </li>

@@ -19,7 +19,9 @@ export default function MovieReviews() {
     fetchReviews();
   }, [movieId]);
   const noReviews = <p>We don't have any reviews for this movie.</p>;
-  return reviews && reviews.total_results > 0 ? (
+  return !reviews ? (
+    ""
+  ) : reviews.total_results > 0 ? (
     <ReviewList reviews={reviews} />
   ) : (
     noReviews

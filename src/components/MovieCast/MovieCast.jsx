@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getCast } from "../movies-api";
-import Actor from "../ActorList/ActorList";
 import ActorList from "../ActorList/ActorList";
 
 export default function MovieCast() {
@@ -23,5 +22,5 @@ export default function MovieCast() {
   const noCast = (
     <p>We don't have any information about the cast for this movie.</p>
   );
-  return cast && cast.cast.length > 0 ? <ActorList cast={cast} /> : noCast;
+  return !cast ? "" : cast.cast.length > 0 ? <ActorList cast={cast} /> : noCast;
 }
