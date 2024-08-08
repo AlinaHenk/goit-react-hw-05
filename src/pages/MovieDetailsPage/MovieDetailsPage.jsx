@@ -9,7 +9,7 @@ export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
   const location = useLocation();
   const backLinkRef = useRef(
-    location.state?.from ?? {
+    location.state ?? {
       pathname: "/movies",
       search: location.state?.search,
     }
