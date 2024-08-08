@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Field, Form, Formik } from "formik";
 import MovieList from "../../components/MovieList/MovieList";
 import { getMovies } from "../../components/movies-api";
 import css from "./MoviesPage.module.css";
+import { useSearchParams } from "react-router-dom";
 
 export default function MoviesPage() {
-  const navigate = useNavigate();
-  const query = new URLSearchParams(location.search);
-  const movie = query.get("query");
+  let [searchParams, setSearchParams] = useSearchParams();
+  let movie = searchParams.get("query");
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -31,7 +30,7 @@ export default function MoviesPage() {
       <Formik
         initialValues={{ movie: !movie ? "" : movie }}
         onSubmit={(values, actions) => {
-          navigate("?query=" + values.movie);
+          setSearchParams({ query: values.movie });
           actions.resetForm();
         }}
       >
